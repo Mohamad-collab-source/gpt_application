@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { ChatContext } from "./MyContext.jsx";
 
+const VITE_API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const Login = () => {
   const { setUser } = useContext(ChatContext);
   const navigate = useNavigate();
@@ -24,7 +27,7 @@ const Login = () => {
       const action = isSignup ? "signup" : "login";
 
       const response = await fetch(
-        `http://localhost:5000/api/auth/${action}`,
+        `${VITE_API_URL}/api/auth/${action}`,
         {
           method: "POST",
           credentials: "include",
@@ -42,24 +45,21 @@ const Login = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data.message || "Authentication failed"
-        );
+        throw new Error(data.message || "Authentication failed");
       }
 
-      // Ensure the backend returned a user object.
       if (!data.user) {
         throw new Error(
           "Authentication succeeded, but the user was not returned by the server."
         );
       }
 
-      // Update global authentication state.
       setUser(data.user);
-      localStorage.setItem("token", data.token);
 
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
 
-      // Navigate to the main chat page.
       navigate("/", { replace: true });
     } catch (err) {
       setError(err.message || "Something went wrong");
@@ -74,9 +74,7 @@ const Login = () => {
         <h1>SigmaGPT</h1>
 
         <p>
-          {isSignup
-            ? "Create your account"
-            : "Welcome back"}
+          {isSignup ? "Create your account" : "Welcome back"}
         </p>
 
         <form onSubmit={handleSubmit}>

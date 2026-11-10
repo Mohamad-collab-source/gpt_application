@@ -4,6 +4,8 @@ import { v1 as uuidv1 } from "uuid";
 
 export const ChatContext = createContext(null);
 
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const ChatProvider = ({ children }) => {
     const [prompt, setPrompt] = useState("");
     const [reply, setReply] = useState(null);
@@ -16,12 +18,12 @@ const ChatProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [authLoading, setAuthLoading] = useState(true);
 
-    // Check login status when the application loads
+    // Check login status when application loads
     useEffect(() => {
         const checkAuth = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:5000/api/auth/me",
+                    `${VITE_API_URL}/api/auth/me`,
                     {
                         method: "GET",
                         credentials: "include",
@@ -56,7 +58,7 @@ const ChatProvider = ({ children }) => {
     const logout = async () => {
         try {
             await fetch(
-                "http://localhost:5000/api/auth/logout",
+                `${VITE_API_URL}/api/auth/logout`,
                 {
                     method: "POST",
                     credentials: "include",

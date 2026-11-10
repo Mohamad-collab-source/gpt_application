@@ -6,6 +6,8 @@ import { ChatContext } from "./MyContext.jsx";
 import { ScaleLoader } from "react-spinners";
 import { Link, useNavigate } from "react-router-dom";
 
+const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const ChatWindow = () => {
   const [loading, setLoading] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
@@ -30,7 +32,7 @@ const ChatWindow = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch(`${VITE_API_URL}/api/chat`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -71,7 +73,7 @@ const ChatWindow = () => {
   const handleLogout = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/logout",
+        `${VITE_API_URL}/api/auth/logout`,
         {
           method: "POST",
           credentials: "include",
