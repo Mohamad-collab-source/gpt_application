@@ -1,0 +1,65 @@
+.sidebar{
+    background-color: #171717;
+    color: #b4b4b4;
+    height: 100vh;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+     scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.logo{
+    height: 25px;
+    width: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    object-fit: cover;
+}
+button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:10px;
+    padding: 5px;
+    background-color:transparent ;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+button:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+.history{
+    margin: 10px;
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-color: rgba(255,255,255,0.1) #171717;
+}
+
+.history li{
+    list-style-type:none;
+    cursor: pointer;
+    padding: 2px 5px;
+    margin-bottom: 0.3rem;
+    font-size: 14px;
+    border: solid 10px transparent;
+    position: relative;
+    border-radius: 4px;
+}
+
+.history li:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+
+.sign {
+    flex-shrink: 0;
+    padding: 15px 10px;
+    margin: 0 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: solid 0.25px rgba(255,255,255,0.5);
+    background-color: #171717;
+}

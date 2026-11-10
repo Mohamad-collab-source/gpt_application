@@ -1,0 +1,173 @@
+
+.chatwindow {
+    background-color: #212121;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar > span {
+    margin: 1rem 2rem;
+}
+
+.userMenuContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+
+.userIconDiv {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 4px 6px;
+    background: transparent;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.userIconDiv:hover {
+    background-color: #333;
+}
+
+.userIcon {
+    background-color: #339cff;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navbarUsername {
+    font-size: 14px;
+    margin: 0 !important;
+    white-space: nowrap;
+}
+
+.userDropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    min-width: 220px;
+    background-color: #262626;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 8px;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    overflow-wrap: anywhere;
+}
+
+.userDetails strong {
+    color: white;
+}
+
+.userDetails small {
+    color: #bbb;
+}
+
+.userDropdown a,
+.userDropdown .dropdownButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.userDropdown a:hover,
+.userDropdown .dropdownButton:hover {
+    background-color: #3a3a3a;
+}
+
+.chatInput {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputBox {
+    width: 100%;
+    position: relative;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputBox input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    font-size: 0.8rem;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.inputBox input:focus {
+    outline: none;
+}
+
+.Info {
+    font-size: smaller;
+    margin-left: 20px;
+}
+
+.send {
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send:hover {
+    color: #fff;
+}
+
+.loader {
+    margin-bottom: 20px;
+}
