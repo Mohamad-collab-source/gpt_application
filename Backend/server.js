@@ -8,11 +8,22 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://gpt-frontend-tan.vercel.app",
+];
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -29,7 +40,7 @@ const connectDb = async () => {
     console.log("DB connected successfully!");
 
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (err) {
     console.error("MongoDB connection failed:", err.message);
